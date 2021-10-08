@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-bool EdadCheck, presionCheck, horaCheck, AyunoCheck;
+bool EdadCheck, presionCheck, horaCheck, AyunoCheck; //Hola2
 
 void edadPeso (){ //Proceso de entrada de datos de la edad y peso
     int edad, peso;
