@@ -1,4 +1,5 @@
 #include <iostream> //Librerias
+#include <cctype>
 using namespace std; //Cabecera
 
 bool edadCheck, presionCheck, horaCheck, ayunoCheck, practicasCheck, enfermedadCheck; // Booleanos como revisores de las funciones
@@ -107,8 +108,42 @@ void tiempoDeAyuno(){ //Función 4: Validación del tiempo de ayuno
 
 void practicasRiesgo (){ //Función 5: Conocer sus últimas actividades peligrosas del donante
     string eleccion;
+    char eleccionFin;
     bool eleccionCorrecta;
-    cout << "";
+    int anios;
+    cout << "Presione la letra de las actividades que ha realizado últimamente"<< endl;
+    cout << " \n a) Tatuajes \n b) Perforaciones \n c) Depilación láser \n d) Otra condición médica invasiva" << endl;
+    cin >> eleccion;
+    //eleccionFin = eleccion.substr(0,1); //Solo tomamos la primera letra de la cadena por si el usuario pone su elección junto a otra letra por error
+    //cout << eleccionFin<<endl;
+    do {
+        switch (eleccionFin)
+        {
+        case "a" || "A":
+            cout << "¿Cuánto tiempo tiene desde ésta intervención? \n 1) Menos de seis meses \n 2) Menos de un año \n 3) Más de un año" << endl;
+            cin >> anios;
+            if (anios >= 1 && anios <=3){
+                if (anios == 3){
+
+                }
+            }
+            break;
+        
+        case "b" || "B":
+            break;
+        
+        case "c" || "C":
+            break;
+        
+        case "d" || "D":
+            break;
+        
+        default:
+            break;
+        }
+
+    } while (eleccionCorrecta == false);
+    
 }
 
 void tienEnfermedad (){ //Función 6: Conocer si tiene alguna enfermedad con tratamiento a largo plazo
@@ -116,8 +151,9 @@ void tienEnfermedad (){ //Función 6: Conocer si tiene alguna enfermedad con tra
 }
 
 int main (){
-    edadPeso ();
+    /*edadPeso ();
     horasDeSuenio();
     tiempoDeAyuno();
-    presionArterial ();
+    presionArterial (); */
+    practicasRiesgo();
 }
