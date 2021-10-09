@@ -1,9 +1,9 @@
-#include <iostream>
-using namespace std;
+#include <iostream> //Librerias
+using namespace std; //Cabecera
 
-bool edadCheck, presionCheck, horaCheck, ayunoCheck; // Booleanos como revisores de las funciones
+bool edadCheck, presionCheck, horaCheck, ayunoCheck, practicasCheck, enfermedadCheck; // Booleanos como revisores de las funciones
 
-void edadPeso (){ //Proceso de entrada de datos de la edad y peso
+void edadPeso (){ //Funcion 1: Entrada de datos de la edad y peso
     int edad, peso;
     float estatura;
     cout << "Ingrese su edad: " << endl;
@@ -35,7 +35,7 @@ void edadPeso (){ //Proceso de entrada de datos de la edad y peso
     }
 }
 
-void presionArterial (){ //Proceso validación de la presion arterial
+void presionArterial (){ //Función 2: Validación de la presion arterial
     int sistolica, diastolica; 
     bool ayuda; //Revisor de ayuda: Se activa cuando el usuario presiona 0 para solicitar ayuda
     do {
@@ -64,7 +64,7 @@ void presionArterial (){ //Proceso validación de la presion arterial
         }
     }
     else {
-        if (ayuda == false){ //Una comparativa simple para soluccionar el bug XD
+        if (ayuda == false){ //Una comparativa simple para soluccionar un bug XD
         cout << "Su presión arterial es demasiada alta, no puede completar el resgistro" << endl;
         }
     }
@@ -73,7 +73,7 @@ void presionArterial (){ //Proceso validación de la presion arterial
     
 }
 
-void horasDeSuenio(){
+void horasDeSuenio(){ //Fución 3: Validar horas de sueño
 	int horas;
     cout<< "Indique cuánto durmió antes del examen"<<endl;
     do {
@@ -89,7 +89,7 @@ void horasDeSuenio(){
     }while(horas < 1 || horas > 24);
 }
 
-void tiempoDeAyuno(){
+void tiempoDeAyuno(){ //Función 4: Validación del tiempo de ayuno
 	int ayuno;
 	cout<<"¿Cuánto tiempo lleva en ayuno?"<<endl;
 	do{
@@ -103,6 +103,16 @@ void tiempoDeAyuno(){
 	}
 	}while (ayuno<1 or ayuno> 10);
 	
+}
+
+void practicasRiesgo (){ //Función 5: Conocer sus últimas actividades peligrosas del donante
+    string eleccion;
+    bool eleccionCorrecta;
+    cout << "";
+}
+
+void tienEnfermedad (){ //Función 6: Conocer si tiene alguna enfermedad con tratamiento a largo plazo
+
 }
 
 int main (){
