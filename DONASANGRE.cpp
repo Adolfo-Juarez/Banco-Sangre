@@ -4,7 +4,7 @@ using namespace std; //Cabecera
 
 bool edadCheck, presionCheck, horaCheck, ayunoCheck, practicasCheck, enfermedadCheck; // Booleanos como revisores de las funciones
 
-void edadPeso (){ //Funcion 1: Entrada de datos de la edad y peso
+void edadPeso (){ //Funcion 1: Entrada de datos de la edad y peso [SIN ERRORES CRÍTICOS]
     int edad, peso;
     float estatura;
     cout << "Ingrese su edad: " << endl;
@@ -16,6 +16,9 @@ void edadPeso (){ //Funcion 1: Entrada de datos de la edad y peso
         if (peso > 50){ //Se valida si cumple el peso para continuar con el siguiente dato
             cout << "Ingrese su estatura en metros: "<< endl;
             cin >> estatura;
+            if (estatura > 100){
+                estatura = estatura / 100;
+            }
             
             if (estatura >= 1.5){ //Se valida si cumple la estatura para continuar con el siguiente dato
              cout << "Sus datos han sido guardados exitosamente" << endl;
@@ -36,7 +39,7 @@ void edadPeso (){ //Funcion 1: Entrada de datos de la edad y peso
     }
 }
 
-void presionArterial (){ //Función 2: Validación de la presion arterial
+void presionArterial (){ //Función 2: Validación de la presion arterial [EN REVISION]
     int sistolica, diastolica; 
     bool ayuda; //Revisor de ayuda: Se activa cuando el usuario presiona 0 para solicitar ayuda
     do {
@@ -74,86 +77,92 @@ void presionArterial (){ //Función 2: Validación de la presion arterial
     
 }
 
-void horasDeSuenio(){ //Fución 3: Validar horas de sueño
+void horasDeSuenio(){ //Fución 3: Validar horas de sueño [SIN ERRORES CRÍTICOS]
 	int horas;
     cout<< "Indique cuánto durmió antes del examen"<<endl;
     do {
         cin>> horas;
-        if (horas >= 5 or horas<= 24){
+        if (horas > 4 && horas < 24){
             cout<<"Tiempo de sueño aprobado"<<endl; //En los mensajes cout sí permite la colocación de la letra ñ
             horaCheck = true;
         }
         else{
             cout<<"El valor indicado no es válido"<<endl;
-            cout<<"Ingrese otro valor nuevamente"<<endl;
         }
     }while(horas < 1 || horas > 24);
 }
 
-void tiempoDeAyuno(){ //Función 4: Validación del tiempo de ayuno
+void tiempoDeAyuno(){ //Función 4: Validación del tiempo de ayuno [SIN ERRORES CRITICOS]
 	int ayuno;
 	cout<<"¿Cuánto tiempo lleva en ayuno?"<<endl;
 	do{
 	cin>> ayuno;
-	if (ayuno> 7 && ayuno < 10 ){
+	if (ayuno == 8 ){
 		cout<<"Tiempo de ayuno adecuado"<<endl;
         ayunoCheck = true;
 	}
 	else{
 		cout<<"El tiempo de ayuno no es indicado para el examen, por favor ingrese una cantidad válida"<<endl; // Puse la instruccion de ingresar una cantidad nueva porque se veía rara
 	}
-	}while (ayuno<1 or ayuno> 10);
+	}while (ayuno <= 7 or ayuno >= 9);
 	
 }
 
 void practicasRiesgo (){ //Función 5: Conocer sus últimas actividades peligrosas del donante
-    string eleccion;
-    char eleccionFin;
-    bool eleccionCorrecta;
-    int anios;
-    cout << "Presione la letra de las actividades que ha realizado últimamente"<< endl;
-    cout << " \n a) Tatuajes \n b) Perforaciones \n c) Depilación láser \n d) Otra condición médica invasiva" << endl;
-    cin >> eleccion;
-    //eleccionFin = eleccion.substr(0,1); //Solo tomamos la primera letra de la cadena por si el usuario pone su elección junto a otra letra por error
-    //cout << eleccionFin<<endl;
+    int eleccion;
     do {
-        switch (eleccionFin)
-        {
-        case "a" || "A":
-            cout << "¿Cuánto tiempo tiene desde ésta intervención? \n 1) Menos de seis meses \n 2) Menos de un año \n 3) Más de un año" << endl;
-            cin >> anios;
-            if (anios >= 1 && anios <=3){
-                if (anios == 3){
-
-                }
-            }
-            break;
-        
-        case "b" || "B":
-            break;
-        
-        case "c" || "C":
-            break;
-        
-        case "d" || "D":
-            break;
-        
-        default:
-            break;
-        }
-
-    } while (eleccionCorrecta == false);
+    cout << "¿Ha practicado alguno de los siguientes procedimientos en el ultimo anio?"<< endl;
+    cout << " \n Tatuajes \n Perforaciones \n Depilación láser \n Otra condicíón médica invasiva(el cuerpo fue invadido o penetrado con una aguja, sonda, etc.)" << endl;
+    cout<< "1= SI  2 = No"<<endl;
+    	practicasCheck = false;
+        cin >> eleccion;
+        if (eleccion==2){
+        	practicasCheck = true;
+		}
+		if(eleccion==1){
+			practicasCheck=false;
+		}
+		else{
+			cout<<"respuesta invalida elija nuevamente"<<endl;
+		}
+    } while (eleccion< 1 || eleccion != 2);
     
 }
 
-void tienEnfermedad (){ //Función 6: Conocer si tiene alguna enfermedad con tratamiento a largo plazo
-
+void padecimientoCronico (){ //Función 6: Conocer si tiene alguna enfermedad con tratamiento a largo plazo
+	int tipoPadecimiento, respuesta, aniosEnfermo;
+	do{
+        enfermedadCheck== false;
+        cout<<"¿Padece alguna enfermedad cronica?\n 1= SI 2= NO"<<endl;
+        cin>> respuesta;
+        if(respuesta==1){
+            cout<<" Elija una de las siguientes"<<endl;
+            cout<<"1._ Hepatitis tipo: A\n 2._ Hepatitis tipo: B\n 3._ Hepatitis tipo: C\n 4._ Hepatitis tipo: D\n 5._ Hepatitis tipo: E\n 6._ Epilepsia\n 7._ Enfermedad del corazon\n 8._ Otra enfermedad que amerite tratamiento a largo plazo"<<endl;
+            cin>>tipoPadecimiento;
+        
+            if(tipoPadecimiento==1|| tipoPadecimiento==3||tipoPadecimiento==2||tipoPadecimiento==4||tipoPadecimiento==5||tipoPadecimiento==6||tipoPadecimiento==7||tipoPadecimiento==8){
+                cout<<"¿A qué edad se contagio de esta enfermedad?"<<endl;
+                cin>>aniosEnfermo;
+                    if(aniosEnfermo<10 && aniosEnfermo>0){
+                        cout<<"Usted aun puede donar"<<endl;
+                        enfermedadCheck=true;
+                    }
+                    else{
+                        enfermedadCheck=false;
+                    }
+            }
+        }
+        else{
+            cout<<"respuesta invalida, elija otra vez"<<endl;
+                enfermedadCheck=false;
+        }
+    }while(respuesta>2 || respuesta<1);
 }
 
 int main (){
-    /*edadPeso ();
-    horasDeSuenio();
-    tiempoDeAyuno();
-    presionArterial (); */
-    practicasRiesgo();
+    //edadPeso ();
+    //horasDeSuenio();
+    //tiempoDeAyuno();
+    presionArterial ();
+    padecimientoCronico();
 }
