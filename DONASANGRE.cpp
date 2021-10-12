@@ -3,6 +3,7 @@
 using namespace std; //Cabecera
 
 bool edadCheck, presionCheck, horaCheck, ayunoCheck, practicasCheck, enfermedadCheck; // Booleanos como revisores de las funciones
+int repetir;
 
 void edadPeso (){ //Funcion 1: Entrada de datos de la edad y peso [SIN ERRORES CRÍTICOS]
     int edad, peso;
@@ -102,13 +103,19 @@ void tiempoDeAyuno(){ //Función 4: Validación del tiempo de ayuno [SIN ERRORES
         ayunoCheck = true;
 	}
 	else{
-		cout<<"El tiempo de ayuno no es indicado para el examen, por favor ingrese una cantidad válida"<<endl; // Puse la instruccion de ingresar una cantidad nueva porque se veía rara
+        if (ayuno >= 1 && ayuno <= 11){
+            ayunoCheck = false;
+            cout << "No cumple con las horas de ayuno necesario" << endl;
+        }
+        else{
+		cout<<"Por favor ingrese una cantidad válida"<<endl; // Puse la instruccion de ingresar una cantidad nueva porque se veía rara
+        }
 	}
-	}while (ayuno <= 7 or ayuno >= 9);
+	}while (ayuno <= 0 or ayuno >= 12);
 	
 }
 
-void practicasRiesgo (){ //Función 5: Conocer sus últimas actividades peligrosas del donante
+void practicasRiesgo (){ //Función 5: Conocer sus últimas actividades peligrosas del donante [SIN ERRORES CRÍTICOS]
     int eleccion;
     do {
     cout << "¿Ha practicado alguno de los siguientes procedimientos en el ultimo anio?"<< endl;
@@ -129,7 +136,7 @@ void practicasRiesgo (){ //Función 5: Conocer sus últimas actividades peligros
     
 }
 
-void padecimientoCronico (){ //Función 6: Conocer si tiene alguna enfermedad con tratamiento a largo plazo
+void padecimientoCronico (){ //Función 6: Conocer si tiene alguna enfermedad con tratamiento a largo plazo [SIN ERRORES CRÍTICOS]
 	int tipoPadecimiento, respuesta, aniosEnfermo;
 	do{
         enfermedadCheck== false;
@@ -144,7 +151,7 @@ void padecimientoCronico (){ //Función 6: Conocer si tiene alguna enfermedad co
                 cout<<"¿Ha qué edad fue diagnosticado con esta enfermedad?"<<endl;
                 cin>>aniosEnfermo;
                     if(aniosEnfermo<=10){
-                        cout<<"Usted aun puede donar"<<endl;
+                        cout<<"Usted aun no puede donar"<<endl;
                         enfermedadCheck=true;
                     }
                     else{
@@ -165,12 +172,23 @@ void padecimientoCronico (){ //Función 6: Conocer si tiene alguna enfermedad co
 }
 
 int main (){
-    //edadPeso ();
-    //horasDeSuenio();
-    //tiempoDeAyuno();
-    //presionArterial ();
-    do{
-    padecimientoCronico();
-    }while (horaCheck == false);
-    
+
+    do {
+        edadPeso ();
+        if (edadCheck == true){
+        horasDeSuenio();
+        if (horaCheck == true){
+        tiempoDeAyuno();
+        if (ayunoCheck == true){    
+        presionArterial ();
+        if (presionCheck == true){
+        padecimientoCronico();
+        }
+        }
+        }
+        }
+
+        cout <<"Presione 1 para continuar con un nuevo registro \n Presione cualquier otra tecla para salir" << endl;
+        cin >> repetir;
+    } while (repetir == 1);
 }
