@@ -39,7 +39,7 @@ void edadPeso (){ //Funcion 1: Entrada de datos de la edad y peso [SIN ERRORES C
     }
 }
 
-void presionArterial (){ //Función 2: Validación de la presion arterial [EN REVISION]
+void presionArterial (){ //Función 2: Validación de la presion arterial [SIN ERRORES CRÍTICOS]
     int sistolica, diastolica; 
     bool ayuda; //Revisor de ayuda: Se activa cuando el usuario presiona 0 para solicitar ayuda
     do {
@@ -141,16 +141,21 @@ void padecimientoCronico (){ //Función 6: Conocer si tiene alguna enfermedad co
             cin>>tipoPadecimiento;
         
             if(tipoPadecimiento==1|| tipoPadecimiento==3||tipoPadecimiento==2||tipoPadecimiento==4||tipoPadecimiento==5||tipoPadecimiento==6||tipoPadecimiento==7||tipoPadecimiento==8){
-                cout<<"¿A qué edad se contagio de esta enfermedad?"<<endl;
+                cout<<"¿Ha qué edad fue diagnosticado con esta enfermedad?"<<endl;
                 cin>>aniosEnfermo;
-                    if(aniosEnfermo<10 && aniosEnfermo>0){
+                    if(aniosEnfermo<=10){
                         cout<<"Usted aun puede donar"<<endl;
                         enfermedadCheck=true;
                     }
                     else{
+                        cout << "Sus datos han sido guardado con éxito"<< endl;
                         enfermedadCheck=false;
                     }
             }
+        }
+        if (respuesta == 2) {
+            cout << "Sus datos han sido guardado con éxito"<< endl;
+            enfermedadCheck=false;
         }
         else{
             cout<<"respuesta invalida, elija otra vez"<<endl;
@@ -163,6 +168,9 @@ int main (){
     //edadPeso ();
     //horasDeSuenio();
     //tiempoDeAyuno();
-    presionArterial ();
+    //presionArterial ();
+    do{
     padecimientoCronico();
+    }while (horaCheck == false);
+    
 }
