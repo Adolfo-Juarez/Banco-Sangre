@@ -152,17 +152,17 @@ void padecimientoCronico (){ //Función 6: Conocer si tiene alguna enfermedad co
                 cin>>aniosEnfermo;
                     if(aniosEnfermo<=10){
                         cout<<"Usted aun no puede donar"<<endl;
-                        enfermedadCheck=true;
+                        enfermedadCheck=false;
                     }
                     else{
                         cout << "Sus datos han sido guardado con éxito"<< endl;
-                        enfermedadCheck=false;
+                        enfermedadCheck=true;
                     }
             }
         }
         if (respuesta == 2) {
             cout << "Sus datos han sido guardado con éxito"<< endl;
-            enfermedadCheck=false;
+            enfermedadCheck=true;
         }
         else{
             cout<<"respuesta invalida, elija otra vez"<<endl;
@@ -171,21 +171,74 @@ void padecimientoCronico (){ //Función 6: Conocer si tiene alguna enfermedad co
     }while(respuesta>2 || respuesta<1);
 }
 
+void compatiSang (){ //Función 7: Saber la compatibilidad de sangre del usuario
+    int Eleccion;
+    bool Check;
+
+    do {
+        cout << "Ingrese la opción que indique su tipo de sangre: \n 1) A+ \n 2) B+ \n 3) O+ \n 4) AB+ \n 5) A- \n 6) B- \n 7) O- \n 8) AB-" << endl;
+        cin >> Eleccion;
+        
+        switch (Eleccion)
+        {
+        case 1:
+            cout << "Su tipo de sangre es compatible con A+ y AB+" << endl;
+            Check = true;
+            break;
+        
+        case 2:
+            cout << "Su tipo de sangre es compatible con B+ y AB+" << endl;
+            Check = true;
+            break;
+        case 3:
+            cout << "Su tipo de sangre es compatible con A+, B+ 0+ y AB+" << endl;
+            Check = true;
+            break;
+        case 4: 
+            cout << "Su tipo de sangre es compatible con AB+" << endl;
+            Check = true;
+            break;
+        case 5: 
+            cout << "Su tipo de sangre es compatible con A+, AB+, A- y B-" << endl;
+            Check = true;
+            break;
+        case 6:
+            cout << "Su tipo de sangre es compatible con B+, AB+ y B-" << endl;
+            Check = true;
+            break;
+        case 7: 
+            cout << "Su tipo de sangre es compatatible con cualquier receptor" << endl;
+            Check = true;
+            break;
+        case 8: 
+            cout << "Su tipo de sangre es compatible con AB+ y AB-" << endl;
+            Check = true;
+            break;
+        default:
+            cout <<  "Ingrese una opción válida e inténtelo de nuevo" << endl;
+            break;
+        }
+    } while (Check == false);
+}
+
 int main (){
 
     do {
         edadPeso ();
         if (edadCheck == true){
-        horasDeSuenio();
-        if (horaCheck == true){
-        tiempoDeAyuno();
-        if (ayunoCheck == true){    
-        presionArterial ();
-        if (presionCheck == true){
-        padecimientoCronico();
-        }
-        }
-        }
+            horasDeSuenio();
+            if (horaCheck == true){
+                tiempoDeAyuno();
+                if (ayunoCheck == true){    
+                    presionArterial ();
+                    if (presionCheck == true){
+                        padecimientoCronico();
+                        if (enfermedadCheck == true){
+                            compatiSang ();
+                        }
+                    }
+                }
+            }
         }
 
         cout <<"Presione 1 para continuar con un nuevo registro \n Presione cualquier otra tecla para salir" << endl;
